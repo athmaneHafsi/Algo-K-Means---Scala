@@ -1,0 +1,25 @@
+import scala.util.control.Breaks._
+
+object Main extends Kmeans{
+     def main(args: Array[String]) {
+     var points : Array[Array[Int]] = Array(Array(2,5),Array(1,6),Array(5,1),Array(6,6),Array(7,5),Array(9,5),Array(2,5),Array(10,6),Array(3,8),Array(6,1));
+     val a= new Kmeans;		// instancie la classe kmeans
+     a.setPoints(points);	//affecte les points a la variable de classe 
+     a.setNombreClusters(3);		// nombre de clusters voulus
+     var clusters : Array[Array[Int]] = a.creerClusters();		//cree des clusters et les met ds un array
+     var finish : Boolean = false;
+     var i:Int =0;
+     while(!finish)
+     {
+       a.miseAJourCentre(clusters);			//met a jour les coordonnees des clusters
+       if (a.nombreItter < i){
+         println("nombre d'itterations fini");
+         finish = true;
+       }
+       i+=1;
+     }
+
+  
+  }
+
+}
